@@ -1,21 +1,25 @@
+let table = document.querySelector('table');
 
-    let table = document.querySelector('table');
+let rows = 5;
+let columns = 5;
 
-    let row = 5;
-    let col = 5;
 
-    for(let i = 0; i<row; i++){
-        let row = table.insertRow();
-        for( let j = 0; j< col; j++){
-            let col = row.insertCell();
-        }
+for (let i = 0; i < rows; i++) {
+    let newRow = table.insertRow();
+    for (let j = 0; j < columns; j++) {
+        let newCell = newRow.insertCell();
     }
+}
 
-    let cell = table.getElementsByTagName('td');
-    for(let i =0; i<cell.length; i++){
-        if ((Math.floor(i / col) + i % col) % 2 === 0) {
-            cell[i].classList.add('selected');
-        }
+
+let cells = table.getElementsByTagName('td');
+
+for (let i = 0; i < cells.length; i++) {
+    let rowIndex = Math.floor(i / columns);
+    let colIndex = i % columns;
+
+
+    if ((rowIndex + colIndex) % 2 === 0) {
+        cells[i].classList.add('selected');
     }
-
-
+}
